@@ -4,6 +4,7 @@ const getUsername = async () => {
   const username = localStorage.getItem("username")
   if (username) {
     console.log(`User existed ${username}`);
+    return username
   }
 
   const res = await fetch("https://random-data-api.com/api/users/random_user");
@@ -25,7 +26,7 @@ const form = document.getElementById("form");
 const input = document.getElementById("input");
 
 
-socket.on("chat message", (msg, serverOffset) => {
+socket.on("chat message", (msg, serverOffset, username) => {
   const item = `<li><p>${msg}</p><small>${username}</small></li>`;
   messages.insertAdjacentHTML("beforeend", item);
   socket.auth.serverOffset = serverOffset
