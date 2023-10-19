@@ -30,6 +30,7 @@ socket.on("chat message", (msg, serverOffset, username) => {
   const item = `<li><p>${msg}</p><small>${username}</small></li>`;
   messages.insertAdjacentHTML("beforeend", item);
   socket.auth.serverOffset = serverOffset
+  messages.scrollTop = messages.scrollHeight
 });
 
 form.addEventListener("submit", (e) => {
